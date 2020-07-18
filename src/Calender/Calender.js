@@ -13,10 +13,7 @@ class Calendar extends React.Component {
         }
         this.onDateClick = this.onDateClick.bind(this)
     }
-//   state = {
-//     currentMonth: new Date(),
-//     selectedDate: new Date()
-//   };
+
 
   renderHeader() {
     const dateFormat = "MMMM yyyy";
@@ -73,6 +70,7 @@ class Calendar extends React.Component {
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
+        // console.log("custom checks" , day , "check" , formattedDate)
         const cloneDay = day;
         days.push(
           <div
@@ -88,6 +86,8 @@ class Calendar extends React.Component {
 
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
+            {this.props.data[day] ? <span>hello</span> : null}
+            {/* {this.props.data[day] && console.log("aagya baba" , this.props.data[day])} */}
           </div>
         );
         day = dateFns.addDays(day, 1);
@@ -103,11 +103,10 @@ class Calendar extends React.Component {
   }
 
   onDateClick(day){
-      console.log("ch" ,day)
     this.setState({
       selectedDate: day
     });
-
+    console.log("select" , day)
   };
 
   nextMonth = () => {
@@ -123,7 +122,6 @@ class Calendar extends React.Component {
   };
 
   render() {
-    console.log("select" , this.state.selectedDate)
     return (
       <div className="calendar">
         {this.renderHeader()}

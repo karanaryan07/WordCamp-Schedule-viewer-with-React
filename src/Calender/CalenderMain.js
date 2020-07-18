@@ -18,7 +18,7 @@ class CalenderApp extends React.Component {
           </div>
         </header>
         <main>
-          <Calendar />
+          <Calendar  data = {this.props.data}/>
         </main>
       </div>
     );

@@ -24,7 +24,7 @@ class NavBar extends React.Component
                             </li>
                         </ul>
                         <div className = "repo">   
-                        <a href="https://github.com/karanaryan07/React-App-with--WordPress-as-Backend" target="_blank" class="btn btn-primary" role="button">Source Code</a>    
+                        <a href="https://github.com/karanaryan07/WordCamp-Schedule-viewer-with-React" target="_blank" class="btn btn-primary" role="button">Source Code</a>    
                         </div>
                     </nav>
         )
