@@ -1,6 +1,6 @@
-# final
 
-Configured the project using Babel and Webpack.
+
+Project was configured using Babel and Webpack.
 
 ## Building and running on localhost
 
