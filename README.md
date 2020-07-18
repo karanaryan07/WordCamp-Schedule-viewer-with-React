@@ -1,6 +1,6 @@
 # final
 
-Empty project.
+Configured the project using Babel and Webpack.
 
 ## Building and running on localhost
 
