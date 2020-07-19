@@ -67,10 +67,20 @@ header #logo .icon {
 main {
   display: block;
   margin: 0 auto;
-  margin-top: 5em;
+  margin-top: 3em;
   max-width: 50em;
+  margin-bottom: 2em;
 }
 
+@media only screen   
+and (min-width : 1920px)   
+ {
+   main
+   {
+    margin-top: 5em;
+    max-width: 65em;
+   }
+ }
 /* GRID */
 
 .row {
@@ -115,6 +125,9 @@ main {
   width: 100%;
   background: var(--neutral-color);
   border: 1px solid var(--border-color);
+  box-shadow: 0px 3px 16px #0A4B6D14;
+  border: 1px solid #1a8fff;
+
 }
 
 .calendar .header {
@@ -146,11 +159,12 @@ main {
 
 .calendar .days {
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 550;
   color: var(--text-color-light);
   font-size: 70%;
   padding: 0.75em 0;
   border-bottom: 1px solid var(--border-color);
+  cursor: default;
 }
 
 .calendar .body .cell {
@@ -195,6 +209,19 @@ main {
   font-weight: 700;
 }
 
+.calendar .body .cell .current 
+{
+  background-color: #007bff;
+  padding: 3px;
+  border-radius: 6px;
+  color: white;
+  position: absolute;
+  font-size: 82.5%;
+  line-height: 1;
+  top: 0.75em;
+  right: 0.75em;
+  font-weight: 700;
+}
 .calendar .body .disabled {
   color: var(--text-color-light);
   pointer-events: none;
@@ -211,6 +238,27 @@ main {
   right: -0.05em;
   transition: 0.25s ease-out;
   letter-spacing: -0.07em;
+}
+
+.calendar .body .cell .text
+{
+  position: absolute;
+  font-size: 80.5%;
+  line-height: 1;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  /* color: #08080a; */
+  font-weight: 350;
+}
+.calendar .body .cell .text-disabled
+{
+  position: absolute;
+  font-size: 80.5%;
+  line-height: 1;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  color: var(--text-color-light);
+  pointer-events: none;
 }
 
 .calendar .body .cell:hover .bg,

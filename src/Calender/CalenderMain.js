@@ -13,12 +13,12 @@ class CalenderApp extends React.Component {
           <div id="logo">
             <span className="icon">date_range</span>
             <span>
-              react<b>calendar</b>
+              WordCamp <b>Calendar</b>
             </span>
           </div>
         </header>
         <main>
-          <Calendar  data = {this.props.data}/>
+          {this.props.data  && <Calendar data = {this.props.data}/>}
         </main>
       </div>
     );

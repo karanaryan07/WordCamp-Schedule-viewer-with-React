@@ -61,3 +61,19 @@
     min-width: 11%;
     margin : 0.6rem;
 }
+
+li{
+    list-style-type: none;
+}
+
+.route
+{
+    color: #007bff;
+    background-color: transparent;
+    text-decoration: none;
+    cursor: pointer;
+}
+.route:hover
+{
+    color: #0056b3;
+}

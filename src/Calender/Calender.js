@@ -2,6 +2,13 @@ import React from "react";
 import * as dateFns from 'date-fns';
 import {hot} from 'react-hot-loader/root'
 import './Calender.css'
+import PopupModal from './Popup.js'
+
+// function stringDate(props_date)
+// {
+// let time =  new Date(props_date);
+// return time;
+// }
 
 class Calendar extends React.Component {
     constructor(props)
@@ -9,11 +16,20 @@ class Calendar extends React.Component {
         super(props)
         this.state = {
             currentMonth: new Date(),
-            selectedDate: new Date()
+            selectedDate: new Date(),
+            showPopup : false,
+            currentDate : new Date()
         }
         this.onDateClick = this.onDateClick.bind(this)
+        this.togglePopupDisplay = this.togglePopupDisplay.bind(this)
+        this.stringDate = this.stringDate.bind(this)
     }
 
+    stringDate(date)
+    {
+    let time =  new Date(date);
+    return time;
+    }
 
   renderHeader() {
     const dateFormat = "MMMM yyyy";
@@ -40,7 +56,7 @@ class Calendar extends React.Component {
     const days = [];
 
     let startDate = dateFns.startOfWeek(this.state.currentMonth);
-    // console.log("start date" , startDate)
+
     
     for (let i = 0; i < 7; i++) {
       days.push(
@@ -54,7 +70,7 @@ class Calendar extends React.Component {
   }
 
   renderCells() {
-    const { currentMonth, selectedDate } = this.state;
+    const { currentMonth, selectedDate , showPopup , currentDate } = this.state;
     const monthStart = dateFns.startOfMonth(currentMonth);
     const monthEnd = dateFns.endOfMonth(monthStart);
     const startDate = dateFns.startOfWeek(monthStart);
@@ -70,7 +86,6 @@ class Calendar extends React.Component {
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
-        // console.log("custom checks" , day , "check" , formattedDate)
         const cloneDay = day;
         days.push(
           <div
@@ -81,13 +96,15 @@ class Calendar extends React.Component {
             }`}
             key={day}
             
-            onClick={() => this.onDateClick(dateFns.toDate(cloneDay))}
+            onClick={() => {this.onDateClick(dateFns.toDate(cloneDay)); this.togglePopupDisplay()}}
           >
-
-            <span className="number">{formattedDate}</span>
+            
+            <span className={`${dateFns.isSameDay(day , currentDate) ? "current" : "number"}`}>{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
-            {this.props.data[day] ? <span>hello</span> : null}
-            {/* {this.props.data[day] && console.log("aagya baba" , this.props.data[day])} */}
+            {this.props.data[day] ? 
+              <span className = {`${!dateFns.isSameMonth(day, monthStart) ? "text-disabled" : "text"}`}
+              >{this.props.data[day].title.rendered}</span> : null}
+           
           </div>
         );
         day = dateFns.addDays(day, 1);
@@ -104,10 +121,15 @@ class Calendar extends React.Component {
 
   onDateClick(day){
     this.setState({
-      selectedDate: day
-    });
-    console.log("select" , day)
+      selectedDate: day,
+    }, () => {this.props.data[this.state.selectedDate] && this.setState({showPopup : true})});
+    
   };
+
+  togglePopupDisplay()
+  {
+    this.setState({showPopup : false})
+  }
 
   nextMonth = () => {
     this.setState({
@@ -127,6 +149,11 @@ class Calendar extends React.Component {
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}
+        {this.props.data[this.state.selectedDate] && this.state.showPopup ? 
+                              <PopupModal 
+                              display = {this.togglePopupDisplay}
+                              date = {this.stringDate(this.props.data[this.state.selectedDate].modified_gmt)} 
+                              data = {this.props.data[this.state.selectedDate]}/> : null}
       </div>
     );
   }

@@ -20,7 +20,10 @@ class NavBar extends React.Component
                                 <a className="nav-link" href="https://central.wordcamp.org/" target="_blank">WordCamp</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="https://wordpress.org/" target="_blank">WordPress</a>
+                                <span className="route nav-link" onClick = {this.props.calenderDisplay}>Calender</span>
+                            </li>
+                            <li className="nav-item">
+                                <span className="route nav-link" onClick = {this.props.mapsDisplay}>Maps</span>
                             </li>
                         </ul>
                         <div className = "repo">   
