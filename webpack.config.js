@@ -56,7 +56,9 @@ const config = {
     }
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    inline:true,
+    port: 3000
   }
 };
 
