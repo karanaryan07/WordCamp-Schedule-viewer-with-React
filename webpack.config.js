@@ -16,7 +16,6 @@ const config = {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000
   },
-  plugins: [new HtmlWebpackPlugin()],
   module: {
     rules: [
       {
