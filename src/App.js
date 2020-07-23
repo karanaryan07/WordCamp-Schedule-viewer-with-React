@@ -45,10 +45,8 @@ componentDidMount()
 {
       
       let storage = []
-      console.log("hey" , this.state.data , this.state.mapsData)
       if(this.state.data == null && this.state.mapsData == null)
       { 
-      console.log("hey hey" , this.state.data , this.state.mapsData)
       fetch('https://central.wordcamp.org/wp-json/wp/v2/wordcamps')
       .then(res =>res.json())
       .then(datas => { 
@@ -64,9 +62,6 @@ componentDidMount()
   }
 
   render() {
-    console.log("api data" , this.state.data)
-    console.log("a" , this.state.data != null , this.state.showCalender)
-    console.log("b" , this.state.mapsData != null , this.state.showMaps)
     return (
       <>
       <NavBar calenderDisplay = {this.updateCalenderDisplay} mapsDisplay = {this.updateMapsDisplay}/>

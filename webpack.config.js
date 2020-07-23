@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   entry: [
@@ -15,6 +16,7 @@ const config = {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000
   },
+  plugins: [new HtmlWebpackPlugin()],
   module: {
     rules: [
       {
