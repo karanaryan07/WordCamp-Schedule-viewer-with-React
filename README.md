@@ -16,30 +16,13 @@
      5) URL used to fetch the json data :
 	      https://central.wordcamp.org/wp-json/wp/v2/wordcamps
 
-     6) Screenshots
-
-Home Page
-
-
-
-
-
-
-When the event date is clicked 
-
-
-
-When the Maps tab is clicked in the top bar
-
-
-
-    7) Few Points 
+    6) Few Points 
     The web application was made responsive using media query and mostly percentage usage of widths.
     The port was changed from 8080 to 3000 in devServer configuration in webpack.config.js file
     React states were used to store the json data in a structured way and were passed as a prop to child components.
 
 
-    8) Program Flow : The section will briefly explain the program flow for better understanding of code : 
+    7) Program Flow : The section will briefly explain the program flow for better understanding of code : 
 
     The main app components renders three sub components
         a) TopBar
@@ -89,17 +72,3 @@ To create a development build:
 ```sh
 npm run build-dev
 ```
-
-## Running
-
-Open the file `dist/index.html` in your browser
-
-## Testing
-
-To run unit tests:
-
-```sh
-npm test
-```
-
-
